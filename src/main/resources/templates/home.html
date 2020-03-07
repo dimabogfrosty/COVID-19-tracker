@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>COVID-19 Tracker</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totalCases}"></h1>
+        <p class="lead">Total cases</p>
+        <hr class="my-4">
+        <p>
+            <span>New cases since previous day:</span>
+            <span th:text="${differenceTotalCases}"></span>
+        </p>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th th:text="${stateColumn}"></th>
+            <th th:text="${countryColumn}"></th>
+            <th th:text="${totalCasesColumn}"></th>
+            <th th:text="${differenceTotalCasesColumn}"></th>
+        </tr>
+        <tr th:each="location : ${locations}">
+            <td th:text="${location.state}"></td>
+            <td th:text="${location.country}"></td>
+            <td th:text="${location.totalCases}"></td>
+            <td th:text="${location.differenceFromPreviousDay}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
